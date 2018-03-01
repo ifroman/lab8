@@ -16,8 +16,26 @@ function initializePage() {
 }
 
 // init jQuery gestures  
-function initGestures() {
-	// add gestures listener here
+function initGestures(){
+	$(function(){
+		$(".judge-img").bind("taphold", tapholdHandler);
+
+		function tapholdHandler(event){
+			var targetIDPrefix = event.target.id;
+			console.log("got prefix: " + targetIDPrefix);
+			$("#" + targetIDPrefix + "-bio").show();
+		}
+	});
+
+	$(function(){
+		$("div.box").bind("taphold", tapholdHandler);
+			function tapholdHandler(event){
+			$(event.target).addClass("taphold");
+			console.log("clicked");
+		}
+
+	});
+
 }
 
 // init RSVP form submit listener
